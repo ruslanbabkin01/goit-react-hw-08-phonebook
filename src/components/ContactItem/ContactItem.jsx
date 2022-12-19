@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Contact, Button } from './ContactItem.styled';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 import { Notify } from 'notiflix';
 import { updateDate } from '../../utils/formatDate';

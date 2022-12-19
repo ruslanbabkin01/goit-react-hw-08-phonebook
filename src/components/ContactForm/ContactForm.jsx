@@ -2,8 +2,8 @@ import { Notify } from 'notiflix';
 import { nanoid } from 'nanoid';
 import { Form, Label, BtnAdd, InputForm } from './ContactForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from '../../redux/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { addContact } from '../../redux/contacts/operations';
 
 export const ContactForm = () => {
   const contacts = useSelector(selectContacts);
