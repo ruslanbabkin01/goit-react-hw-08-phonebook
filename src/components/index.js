@@ -7,3 +7,5 @@ export * from './AuthNav/AuthNav';
 export * from './LoginForm/LoginForm';
 export * from './RegisterForm/RegisterForm';
 export * from './UserMenu/UserMenu';
+export * from './Loader/Loader';
+export * from './NotFound/NotFound';

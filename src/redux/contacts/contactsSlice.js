@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './operations';
 
-const phonebookInitialState = {
+const initialState = {
   items: [],
   isLoading: false,
   error: null,
@@ -18,7 +18,7 @@ const handleRejected = (state, action) => {
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: phonebookInitialState,
+  initialState,
   reducers: {
     removeContact(state, action) {
       state.items = state.items.filter(
