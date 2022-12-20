@@ -4,9 +4,7 @@ export default function NotFound() {
   return (
     <ErrorText>
       This page was not found, please return to
-      <ErrorLink to="/">Home page</ErrorLink>
+      <ErrorLink to="/"> Home page</ErrorLink>
     </ErrorText>
   );
 }
-
-
