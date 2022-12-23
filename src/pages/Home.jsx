@@ -1,21 +1,33 @@
-const styles = {
-  container: {
-    minHeight: 'calc(100vh - 50px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 48,
-    textAlign: 'center',
-  },
-};
+import { Container, Link, Typography } from '@mui/material';
+import { useAuth } from 'hooks/useAuth';
+import { NavLink } from 'react-router-dom';
 
 export default function Home() {
-  return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Contact manager welcome page</h1>
-    </div>
+  const { isLoggedIn } = useAuth();
+
+  return isLoggedIn ? (
+    <Container sx={{ my: 4 }}>
+      <Typography variant="h3" component="h1" sx={{ textAlign: 'center' }}>
+        Welcome to your personal phonebook.
+        <br />
+        <Link to="/contacts" component={NavLink}>
+          Add your contacts
+        </Link>
+      </Typography>
+    </Container>
+  ) : (
+    <Container>
+      <Typography variant="h3" component="h1" sx={{ textAlign: 'center' }}>
+        Welcome to your personal phonebook. Please
+        <br />
+        <Link to="/register" component={NavLink}>
+          register
+        </Link>{' '}
+        or{' '}
+        <Link to="/login" component={NavLink}>
+          login
+        </Link>
+      </Typography>
+    </Container>
   );
 }

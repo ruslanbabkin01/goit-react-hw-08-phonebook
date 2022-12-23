@@ -19,12 +19,3 @@ export const selectVisibleContacts = createSelector(
     return sortContacts(visibleContacts);
   }
 );
-
-// export const selectVisibleContacts = state => {
-//   const contacts = selectContacts(state);
-//   const filter = selectFilter(state);
-
-//   return contacts.filter(contact =>
-//     contact.name.toLowerCase().includes(filter.toLowerCase())
-//   );
-// };

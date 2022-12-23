@@ -1,8 +1,8 @@
 import { ThreeCircles } from 'react-loader-spinner';
-import { LoadContainer } from './Loader.styled';
+import { Container } from '@mui/material';
 
 export const Loader = () => (
-  <LoadContainer>
+  <Container sx={{ display: 'flex', justifyContent: 'center' }}>
     <ThreeCircles
       height="100"
       width="100"
@@ -15,7 +15,7 @@ export const Loader = () => (
       innerCircleColor=""
       middleCircleColor=""
     />
-  </LoadContainer>
+  </Container>
 );
 
 export default Loader;
