@@ -1,5 +1,5 @@
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
@@ -7,9 +7,9 @@ import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivatRoute';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
+import NotFound from './NotFound';
+import Loader from './Loader';
 import { Layout } from './Layout';
-import NotFound from './NotFound/NotFound';
-import Loader from './Loader/Loader';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));

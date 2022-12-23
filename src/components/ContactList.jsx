@@ -1,18 +1,18 @@
-import { Contacts, TotalContacts } from './ContactList.styled';
-import { ContactItem } from '../ContactItem/ContactItem';
+import { ContactItem } from './ContactItem';
 import { useSelector } from 'react-redux';
 import { selectVisibleContacts } from 'redux/contacts/selectors';
+import { List, Typography } from '@mui/material';
 
 export const ContactList = () => {
   const contacts = useSelector(selectVisibleContacts);
   const totalContacts = contacts.length;
 
   return (
-    <Contacts>
+    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {contacts.map(({ number, name, id }) => (
         <ContactItem key={id} number={number} name={name} id={id} />
       ))}
-      <TotalContacts>Total contacts: {totalContacts}</TotalContacts>
-    </Contacts>
+      <Typography variant="inherit">Total contacts: {totalContacts}</Typography>
+    </List>
   );
 };
