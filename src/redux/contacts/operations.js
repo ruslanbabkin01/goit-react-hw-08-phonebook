@@ -1,3 +1,4 @@
+import { Alert } from '@mui/material';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Notify } from 'notiflix';
@@ -19,7 +20,7 @@ export const addContact = createAsyncThunk(
   async (contact, thunkAPI) => {
     try {
       const { data } = await axios.post('/contacts', contact);
-      Notify.info(`Contact ${contact.name} added to the contacts`);
+      Notify.success(`Contact ${contact.name} added to the contacts`);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

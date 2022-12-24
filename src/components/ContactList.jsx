@@ -8,7 +8,7 @@ export const ContactList = () => {
   const totalContacts = contacts.length;
 
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <List sx={{ width: '100%', maxWidth: 420 }}>
       {contacts.map(({ number, name, id }) => (
         <ContactItem key={id} number={number} name={name} id={id} />
       ))}

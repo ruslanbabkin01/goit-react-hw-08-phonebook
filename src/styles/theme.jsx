@@ -2,14 +2,14 @@ import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
   palette: {
-    mode: 'light',
+    primary: {
+      main: '#008B8B',
+    },
   },
   typography: {
-    fontFamily: 'Droid Serif',
+    fontFamily: 'Segoe UI',
     h3: {
       fontWeight: 500,
     },
   },
 });
-
-export default theme;

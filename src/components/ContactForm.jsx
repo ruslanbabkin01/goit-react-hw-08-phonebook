@@ -68,9 +68,9 @@ export const ContactForm = () => {
           required
           name="number"
           label="Number"
-          type="password"
+          type="tel"
           id={numberInputId}
-          autoComplete="current-password"
+          autoComplete="tel"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         />

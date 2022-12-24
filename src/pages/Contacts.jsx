@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Helmet } from 'react-helmet';
 import { selectIsLoading } from 'redux/contacts/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
 import { Box, Typography, useTheme } from '@mui/material';
@@ -23,7 +22,6 @@ export default function Contacts() {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        mb: 5,
         mt: 3,
 
         [theme.breakpoints.down('sm')]: {
@@ -37,10 +35,6 @@ export default function Contacts() {
         },
       }}
     >
-      <Helmet>
-        <title>Your contacts</title>
-      </Helmet>
-
       <ContactForm />
       <Box
         sx={{
