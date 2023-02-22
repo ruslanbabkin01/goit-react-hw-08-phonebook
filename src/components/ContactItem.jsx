@@ -6,7 +6,7 @@ import { IconButton, ListItem } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { Box } from '@mui/system';
 
-export const ContactItem = ({ name, number, id }) => {
+export const ContactItem = ({ name, number, email, id }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -26,6 +26,8 @@ export const ContactItem = ({ name, number, id }) => {
       <Box>
         {name} <br />
         {number}
+        <br />
+        {email}
       </Box>
 
       <IconButton
@@ -45,4 +47,5 @@ ContactItem.propTypes = {
   number: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  email: PropTypes.string,
 };

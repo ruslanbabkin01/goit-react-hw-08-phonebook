@@ -13,16 +13,21 @@ export const ContactForm = () => {
 
   const nameInputId = nanoid();
   const numberInputId = nanoid();
+  const emailInputId = nanoid();
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
+    const email = form.elements.email.value;
+
     const newContact = {
       name,
       number,
+      email,
     };
+
     const currentName = name;
     const matchName = contacts.some(
       contact => contact.name.toLowerCase() === currentName.toLowerCase()
@@ -73,6 +78,15 @@ export const ContactForm = () => {
           autoComplete="tel"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        />
+        <TextField
+          margin="normal"
+          name="email"
+          label="Email"
+          type="email"
+          id={emailInputId}
+          autoComplete="email"
+          pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
         />
         <Button type="submit" variant="contained" sx={{ mt: 2, mb: 2 }}>
           Add contact

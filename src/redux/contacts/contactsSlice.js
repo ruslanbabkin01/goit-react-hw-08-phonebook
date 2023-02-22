@@ -22,7 +22,7 @@ const contactsSlice = createSlice({
   reducers: {
     removeContact(state, action) {
       state.items = state.items.filter(
-        contact => contact.id !== action.payload
+        contact => contact._id !== action.payload
       );
     },
   },
@@ -46,7 +46,7 @@ const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.items = state.items.filter(
-        contact => contact.id !== action.payload.id
+        contact => contact._id !== action.payload._id
       );
     },
     [deleteContact.rejected]: handleRejected,
