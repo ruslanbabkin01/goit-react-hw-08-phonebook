@@ -77,6 +77,7 @@ export const ContactForm = () => {
           id={numberInputId}
           autoComplete="tel"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          placeholder="+380 50 111 11 11"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         />
         <TextField
@@ -86,6 +87,7 @@ export const ContactForm = () => {
           type="email"
           id={emailInputId}
           autoComplete="email"
+          placeholder="example@gmail.com"
           pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
         />
         <Button type="submit" variant="contained" sx={{ mt: 2, mb: 2 }}>

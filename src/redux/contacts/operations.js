@@ -8,8 +8,9 @@ export const fetchContacts = createAsyncThunk(
     try {
       const { data } = await axios.get('/contacts');
       return data.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    } catch (e) {
+      Notify.failure(e.response.data.message);
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
@@ -22,6 +23,7 @@ export const addContact = createAsyncThunk(
       Notify.success(`Contact ${contact.name} added to the contacts`);
       return data;
     } catch (e) {
+      Notify.failure(e.response.data.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -31,9 +33,10 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/contacts/${contactId}`);
-      return response.data;
+      const { data } = await axios.delete(`/contacts/${contactId}`);
+      return data.data;
     } catch (e) {
+      Notify.failure(e.response.data.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }

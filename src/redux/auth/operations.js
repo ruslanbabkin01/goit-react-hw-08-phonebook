@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Notify } from 'notiflix';
 
 axios.defaults.baseURL = 'https://contacts-api-9mom.onrender.com/api';
 // axios.defaults.baseURL = 'http://localhost:4321/api';
@@ -18,10 +19,12 @@ export const register = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/register', credentials);
-      token.set(data.token);
+      // token.set(data.token);
+      Notify.info(`Please confirm registration. Check your email`);
       return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    } catch (e) {
+      Notify.failure(e.response.data.message);
+      return rejectWithValue(e.message);
     }
   }
 );
@@ -34,6 +37,7 @@ export const logIn = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (e) {
+      Notify.failure(e.response.data.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
