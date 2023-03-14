@@ -23,6 +23,7 @@ export const addContact = createAsyncThunk(
       Notify.success(`Contact ${contact.name} added to the contacts`);
       return data;
     } catch (e) {
+      console.log(e.response.data.message);
       Notify.failure(e.response.data.message);
       return thunkAPI.rejectWithValue(e.message);
     }
