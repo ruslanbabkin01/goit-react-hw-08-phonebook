@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { BASE_URL } from 'services';
+// import { BASE_URL } from 'services';
 
 function Copyright(props) {
   return (
@@ -88,14 +88,14 @@ export const LoginForm = () => {
           >
             Log In
           </Button>
-          <Button
+          {/* <Button
             href={`${BASE_URL}/users/google`}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
             Log In with Google
-          </Button>
+          </Button> */}
         </Box>
       </Box>
       <Copyright sx={{ mt: 8, mb: 4 }} />

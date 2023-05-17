@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <Container sx={{ my: 4 }}>
       <Typography variant="h3" component="h1" sx={{ textAlign: 'center' }}>
-        This page was not found, please return to
+        This page was not found, please return to <br />
         <RouterLink to="/"> Home page</RouterLink>
       </Typography>
     </Container>
