@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+export const BASE_URL = 'https://contacts-api-9mom.onrender.com/api';
+
+// export const BASE_URL = 'http://localhost:4321/api'
+
 export const instance = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: BASE_URL,
 });
 
 export const setToken = accessToken =>

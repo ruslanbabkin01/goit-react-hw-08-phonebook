@@ -7,16 +7,18 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { theme } from 'styles/theme';
 import { ThemeProvider } from '@mui/material';
 import Loader from 'components/Loader';
-import { App } from 'components/App';
+import { App } from 'App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ThemeProvider theme={theme}>
-    <Provider store={store}>
-      <PersistGate loading={<Loader />} persistor={persistor}>
-        <BrowserRouter basename="/goit-react-hw-08-phonebook">
-          <App />
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
-  </ThemeProvider>
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <PersistGate loading={<Loader />} persistor={persistor}>
+          <BrowserRouter basename="/goit-react-hw-08-phonebook">
+            <App />
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
+    </ThemeProvider>
+  </React.StrictMode>
 );

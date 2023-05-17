@@ -3,18 +3,18 @@ import { ToastContainer } from 'react-toastify';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { PublicRoute } from './PublicRoute';
-import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './components/PublicRoute';
+import { PrivateRoute } from './components/PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
-import NotFound from './NotFound';
-import Loader from './Loader';
-import { Layout } from './Layout';
+import NotFound from './components/NotFound';
+import Loader from './components/Loader';
+import { Layout } from './components/Layout';
 
-const HomePage = lazy(() => import('../pages/Home'));
-const RegisterPage = lazy(() => import('../pages/Register'));
-const LoginPage = lazy(() => import('../pages/Login'));
-const ContactsPage = lazy(() => import('../pages/Contacts'));
+const HomePage = lazy(() => import('./pages/Home'));
+const RegisterPage = lazy(() => import('./pages/Register'));
+const LoginPage = lazy(() => import('./pages/Login'));
+const ContactsPage = lazy(() => import('./pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();

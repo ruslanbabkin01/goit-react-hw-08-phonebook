@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { BASE_URL } from 'services';
 
 function Copyright(props) {
   return (
@@ -89,7 +90,7 @@ export const LoginForm = () => {
             Log In
           </Button>
           <Button
-            href={`${process.env.REACT_APP_BASE_URL}/users/google`}
+            href={`${BASE_URL}/users/google`}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
