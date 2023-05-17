@@ -1,9 +1,25 @@
 import { Container, Link, Typography } from '@mui/material';
 import { useAuth } from 'hooks/useAuth';
-import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { NavLink, useSearchParams } from 'react-router-dom';
+import { setAccessToken } from 'redux/auth/slice';
+import { setToken } from 'services';
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
+  const accessToken = searchParams.get('accessToken');
+  const refreshToken = searchParams.get('refreshToken');
   const { isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    if (accessToken && refreshToken) {
+      setToken(accessToken);
+      dispatch(setAccessToken(accessToken));
+      localStorage.setItem('refreshToken', refreshToken);
+    }
+  }, [dispatch, accessToken, refreshToken]);
 
   return isLoggedIn ? (
     <Container sx={{ my: 4 }}>

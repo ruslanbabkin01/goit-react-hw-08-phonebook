@@ -100,6 +100,14 @@ export const RegisterForm = () => {
           >
             Register
           </Button>
+          <Button
+            href={`${process.env.REACT_APP_BASE_URL}/users/google`}
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Register with Google
+          </Button>
         </Box>
       </Box>
       <Copyright sx={{ mt: 8, mb: 4 }} />

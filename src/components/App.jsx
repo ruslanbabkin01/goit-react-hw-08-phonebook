@@ -4,7 +4,7 @@ import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { PublicRoute } from './PublicRoute';
-import { PrivateRoute } from './PrivatRoute';
+import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
 import NotFound from './NotFound';
@@ -39,7 +39,6 @@ export const App = () => {
             //     redirectTo="/contacts"
             //     component={<RegisterPage />}
           />
-
           <Route
             path="/login"
             element={
