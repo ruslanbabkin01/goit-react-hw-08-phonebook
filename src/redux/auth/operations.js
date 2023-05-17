@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Notify } from 'notiflix';
+import { toast } from 'react-toastify';
 import { instance, setToken, unsetToken } from 'services';
 
 export const register = createAsyncThunk(
@@ -8,10 +8,10 @@ export const register = createAsyncThunk(
     try {
       const { data } = await instance.post('/users/register', credentials);
       // setToken(data.token);
-      Notify.info(`Please confirm registration. Check your email`);
+      toast.info(`Please confirm registration. Check your email`);
       return data;
     } catch (e) {
-      Notify.failure(e.response.data.message);
+      toast.error(e.response.data.message);
       return rejectWithValue(e.message);
     }
   }
@@ -26,7 +26,7 @@ export const logIn = createAsyncThunk(
       localStorage.setItem('refreshToken', data.refreshToken);
       return data;
     } catch (e) {
-      Notify.failure(e.response.data.message);
+      toast.error(e.response.data.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -38,7 +38,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     unsetToken();
     return data;
   } catch (e) {
-    Notify.failure(e.response.data.message);
+    toast.error(e.response.data.message);
     return thunkAPI.rejectWithValue(e.message);
   }
 });
@@ -60,6 +60,7 @@ export const refreshUser = createAsyncThunk(
       const { data } = await instance.get('/users/current');
       return data;
     } catch (e) {
+      toast.error(e.response.data.message);
       return thunkAPI.rejectWithValue(e.response.data);
     }
   }

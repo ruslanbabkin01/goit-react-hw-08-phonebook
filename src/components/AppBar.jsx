@@ -1,7 +1,6 @@
 import { Navigation } from './Navigation';
 import { AuthNav } from './AuthNav';
 import { useAuth } from '../hooks/useAuth';
-import * as React from 'react';
 import { AppBar, Toolbar } from '@mui/material';
 import { UserMenu } from './UserMenu';
 

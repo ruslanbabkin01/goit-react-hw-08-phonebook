@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
-import { Notify } from 'notiflix';
 import { deleteContact } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 import { IconButton, ListItem } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { Box } from '@mui/system';
+import { toast } from 'react-toastify';
 
 export const ContactItem = ({ name, number, email, id }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
     dispatch(deleteContact(id));
-    Notify.info(`Contact ${name} deleted`);
+    toast.info(`Contact ${name} deleted`);
   };
 
   return (
