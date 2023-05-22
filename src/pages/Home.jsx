@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import { setAccessToken } from 'redux/auth/slice';
-import { setToken } from 'services';
+import { setToken } from 'services/index';
 
 export default function Home() {
   const dispatch = useDispatch();
