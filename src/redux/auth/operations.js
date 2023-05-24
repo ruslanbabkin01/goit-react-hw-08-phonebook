@@ -38,7 +38,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     unsetToken();
     return data;
   } catch (e) {
-    toast.error(e.response.data.message);
+    console.log(e.response.data.message);
     return thunkAPI.rejectWithValue(e.message);
   }
 });
@@ -60,7 +60,7 @@ export const refreshUser = createAsyncThunk(
       const { data } = await instance.get('/users/current');
       return data;
     } catch (e) {
-      toast.error(e.response.data.message);
+      console.log(e.response.data.message);
       return thunkAPI.rejectWithValue(e.response.data);
     }
   }
