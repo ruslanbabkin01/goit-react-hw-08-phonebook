@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from '../redux/contacts/operations';
@@ -9,10 +8,6 @@ import Box from '@mui/material/Box';
 export const ContactForm = () => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
-
-  const nameInputId = nanoid();
-  const numberInputId = nanoid();
-  const emailInputId = nanoid();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -59,7 +54,6 @@ export const ContactForm = () => {
         <TextField
           margin="normal"
           required
-          id={nameInputId}
           label="Name"
           name="name"
           autoComplete="name"
@@ -73,7 +67,6 @@ export const ContactForm = () => {
           name="number"
           label="Number"
           type="tel"
-          id={numberInputId}
           autoComplete="tel"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           placeholder="+380 50 111 11 11"
@@ -84,7 +77,6 @@ export const ContactForm = () => {
           name="email"
           label="Email"
           type="email"
-          id={emailInputId}
           autoComplete="email"
           placeholder="example@gmail.com"
           pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
