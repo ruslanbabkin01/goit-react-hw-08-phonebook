@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import { ResponsiveAppBar } from './AppBar';
 import { Suspense } from 'react';
-import Loader from './Loader';
+import { Loader, ResponsiveAppBar } from './index';
 
 export const Layout = () => {
   return (

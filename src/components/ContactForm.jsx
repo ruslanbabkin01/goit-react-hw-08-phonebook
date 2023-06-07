@@ -1,9 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from '../redux/contacts/operations';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
+import { Button, TextField, Box } from '@mui/material';
 
 export const ContactForm = () => {
   const contacts = useSelector(selectContacts);

@@ -3,13 +3,10 @@ import { ToastContainer } from 'react-toastify';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { PublicRoute } from './components/PublicRoute';
-import { PrivateRoute } from './components/PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/operations';
-import NotFound from './components/NotFound';
-import Loader from './components/Loader';
-import { Layout } from './components/Layout';
+import { Layout, Loader, PrivateRoute, PublicRoute } from 'components';
+import NotFound from 'components/NotFound';
 
 const HomePage = lazy(() => import('./pages/Home'));
 const RegisterPage = lazy(() => import('./pages/Register'));
