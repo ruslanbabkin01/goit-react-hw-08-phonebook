@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { deleteContact } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 import { IconButton, ListItem } from '@mui/material';
@@ -41,11 +40,4 @@ export const ContactItem = ({ name, number, email, id }) => {
       </IconButton>
     </ListItem>
   );
-};
-
-ContactItem.propTypes = {
-  number: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  email: PropTypes.string,
 };

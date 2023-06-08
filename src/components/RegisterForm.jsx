@@ -1,31 +1,37 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
+import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Avatar,
   Button,
-  TextField,
   Box,
   Typography,
   Container,
+  Grid,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Copyright } from 'components';
+import { Copyright, CustomInput } from 'components';
+import { useForm } from 'react-hook-form';
+import { registerValidationSchema } from 'validationSсhemas/validationSchemas';
+import { Link } from 'react-router-dom';
+
 // import { BASE_URL } from 'services';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
 
-    dispatch(
-      register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-    form.reset();
+  const { control, reset, handleSubmit } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+    resolver: yupResolver(registerValidationSchema),
+  });
+
+  const onSubmit = data => {
+    dispatch(register(data));
+    reset();
   };
 
   return (
@@ -44,37 +50,25 @@ export const RegisterForm = () => {
         <Typography component="h1" variant="h5">
           Register
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="name"
-            label="Name"
-            name="name"
-            autoComplete="name"
-            autoFocus
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
+        <Box
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+          sx={{ mt: 1 }}
+        >
+          <CustomInput id="name" label="Name" name="name" control={control} />
+          <CustomInput
             id="email"
             label="Email"
             name="email"
-            autoComplete="email"
+            control={control}
           />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
+          <CustomInput
             name="password"
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
+            control={control}
           />
           <Button
             type="submit"
@@ -84,6 +78,21 @@ export const RegisterForm = () => {
           >
             Register
           </Button>
+
+          <Grid
+            container
+            justifyContent="center"
+            sx={{
+              '&:hover': {
+                color: '#008B8B',
+              },
+            }}
+          >
+            <Grid item>
+              <Link to="/login">Already have an account? Login</Link>
+            </Grid>
+          </Grid>
+
           {/* <Button
             href={`${BASE_URL}/users/google`}
             fullWidth

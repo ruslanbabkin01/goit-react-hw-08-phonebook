@@ -1,5 +1,3 @@
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
@@ -24,34 +22,31 @@ export const App = () => {
   return isRefreshing ? (
     <Loader />
   ) : (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route
-            path="/register"
-            element={<RegisterPage />}
-            //      element={
-            //   <PublicRoute
-            //     redirectTo="/contacts"
-            //     component={<RegisterPage />}
-          />
-          <Route
-            path="/login"
-            element={
-              <PublicRoute redirectTo="/contacts" component={<LoginPage />} />
-            }
-          />
-          <Route
-            path="/contacts"
-            element={
-              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
-            }
-          />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <ToastContainer />
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={<RegisterPage />}
+          //      element={
+          //   <PublicRoute
+          //     redirectTo="/contacts"
+          //     component={<RegisterPage />}
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };

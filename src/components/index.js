@@ -14,3 +14,4 @@ export * from './PrivateRoute.jsx';
 export * from './PublicRoute.jsx';
 export * from './RegisterForm.jsx';
 export * from './UserMenu.jsx';
+export * from './CustomInput.jsx';

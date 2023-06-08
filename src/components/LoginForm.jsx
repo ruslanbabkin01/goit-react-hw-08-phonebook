@@ -3,28 +3,33 @@ import { logIn } from 'redux/auth/operations';
 import {
   Avatar,
   Button,
-  TextField,
   Typography,
   Container,
   Box,
+  Grid,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Copyright } from 'components';
+import { Copyright, CustomInput } from 'components';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import { loginValidationSchema } from 'validationSсhemas/validationSchemas';
+import { Link } from 'react-router-dom';
 // import { BASE_URL } from 'services';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
 
-    dispatch(
-      logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-    form.reset();
+  const { control, reset, handleSubmit } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    resolver: yupResolver(loginValidationSchema),
+  });
+
+  const onSubmit = data => {
+    dispatch(logIn(data));
+    reset();
   };
 
   return (
@@ -43,26 +48,24 @@ export const LoginForm = () => {
         <Typography component="h1" variant="h5">
           Log In
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
+        <Box
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+          sx={{ mt: 1 }}
+        >
+          <CustomInput
             id="email"
             label="Email"
             name="email"
-            autoComplete="email"
-            autoFocus
+            control={control}
           />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
+          <CustomInput
             name="password"
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
+            control={control}
           />
           <Button
             type="submit"
@@ -72,6 +75,20 @@ export const LoginForm = () => {
           >
             Log In
           </Button>
+
+          <Grid
+            container
+            justifyContent="center"
+            sx={{
+              '&:hover': {
+                color: '#008B8B',
+              },
+            }}
+          >
+            <Grid item>
+              <Link to="/register">{"Don't have an account? Register"}</Link>
+            </Grid>
+          </Grid>
           {/* <Button
             href={`${BASE_URL}/users/google`}
             fullWidth
