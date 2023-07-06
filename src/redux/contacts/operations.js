@@ -7,7 +7,7 @@ export const fetchContacts = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await instance.get('/contacts');
-      return data.data;
+      return data.contacts;
     } catch (e) {
       toast.error(e.response.data.message);
       return thunkAPI.rejectWithValue(e.message);
@@ -35,7 +35,7 @@ export const deleteContact = createAsyncThunk(
   async (contactId, thunkAPI) => {
     try {
       const { data } = await instance.delete(`/contacts/${contactId}`);
-      return data.data;
+      return data.contact;
     } catch (e) {
       toast.error(e.response.data.message);
       return thunkAPI.rejectWithValue(e.message);

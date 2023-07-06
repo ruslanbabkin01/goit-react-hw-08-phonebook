@@ -6,7 +6,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await instance.post('/users/register', credentials);
+      const { data } = await instance.post('/auth/register', credentials);
       // setToken(data.token);
       toast.info(`Please confirm registration. Check your email`);
       return data;
@@ -21,7 +21,7 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await instance.post('/users/login', credentials);
+      const { data } = await instance.post('/auth/login', credentials);
       setToken(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
       return data;
@@ -34,7 +34,7 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    const { data } = await instance.post('/users/logout');
+    const { data } = await instance.post('/auth/logout');
     unsetToken();
     return data;
   } catch (e) {
