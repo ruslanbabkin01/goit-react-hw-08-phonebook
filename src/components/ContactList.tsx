@@ -1,10 +1,10 @@
-import { useSelector } from 'react-redux';
 import { selectVisibleContacts } from 'redux/contacts/selectors';
 import { List, Typography } from '@mui/material';
 import { ContactItem } from './ContactItem';
+import { useAppSelector } from 'redux/hooks';
 
 export const ContactList = () => {
-  const contacts = useSelector(selectVisibleContacts);
+  const contacts = useAppSelector(selectVisibleContacts);
   const totalContacts = contacts.length;
 
   return (
@@ -14,7 +14,7 @@ export const ContactList = () => {
           key={_id}
           number={number}
           name={name}
-          id={_id}
+          _id={_id}
           email={email}
         />
       ))}

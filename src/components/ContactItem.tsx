@@ -1,15 +1,16 @@
 import { deleteContact } from 'redux/contacts/operations';
-import { useDispatch } from 'react-redux';
 import { IconButton, ListItem } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { Box } from '@mui/system';
 import { toast } from 'react-toastify';
+import { useAppDispatch } from 'redux/hooks';
+import { Contact } from '../../@types/types';
 
-export const ContactItem = ({ name, number, email, id }) => {
-  const dispatch = useDispatch();
+export const ContactItem = ({ name, number, email, _id }: Contact) => {
+  const dispatch = useAppDispatch();
 
   const handleDelete = () => {
-    dispatch(deleteContact(id));
+    dispatch(deleteContact(_id));
     toast.info(`Contact ${name} deleted`);
   };
 
@@ -32,7 +33,7 @@ export const ContactItem = ({ name, number, email, id }) => {
       <IconButton
         variant="outlined"
         type="button"
-        id={id}
+        id={_id}
         onClick={handleDelete}
         sx={{ p: '5px' }}
       >

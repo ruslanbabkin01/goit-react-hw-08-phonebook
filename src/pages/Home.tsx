@@ -1,13 +1,13 @@
+import { useEffect } from 'react';
 import { Container, Link, Typography } from '@mui/material';
 import { useAuth } from 'hooks/useAuth';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import { setAccessToken } from 'redux/auth/slice';
+import { useAppDispatch } from 'redux/hooks';
 import { setToken } from 'services/index';
 
 export default function Home() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [searchParams] = useSearchParams();
   const accessToken = searchParams.get('accessToken');
   const refreshToken = searchParams.get('refreshToken');

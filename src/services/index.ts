@@ -7,7 +7,7 @@ export const instance = axios.create({
   baseURL: BASE_URL,
 });
 
-export const setToken = accessToken =>
+export const setToken = (accessToken: string) =>
   (instance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`);
 
 export const unsetToken = () =>

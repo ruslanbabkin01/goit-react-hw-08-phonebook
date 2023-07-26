@@ -1,7 +1,16 @@
-import { TextField } from '@mui/material';
-import { Controller } from 'react-hook-form';
+import { TextField, TextFieldProps } from '@mui/material';
+import { Control, Controller, FieldValues } from 'react-hook-form';
 
-export const CustomInput = ({
+interface CustomInputProps {
+  control: Control<FieldValues>;
+  id: string;
+  name: string;
+  label: string;
+  type: string;
+  placeholder: string;
+}
+
+export const CustomInput: React.FC<CustomInputProps> = ({
   control,
   id,
   name,
@@ -23,7 +32,7 @@ export const CustomInput = ({
           label={label}
           name={name}
           placeholder={placeholder}
-          type={type}
+          type={type as TextFieldProps['type']}
           value={value}
           autoFocus
           fullWidth

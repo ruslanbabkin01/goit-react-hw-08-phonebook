@@ -1,36 +1,35 @@
-import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/operations';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { logIn } from 'redux/auth/operations';
 import {
   Avatar,
   Button,
-  Box,
   Typography,
   Container,
+  Box,
   Grid,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Copyright, CustomInput } from 'components';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { registerValidationSchema } from 'validationSсhemas/validationSchemas';
+import { loginValidationSchema } from 'validationSсhemas/validationSchemas';
 import { Link } from 'react-router-dom';
-
+import { useAppDispatch } from 'redux/hooks';
+import { LoginData } from '../../@types/types';
 // import { BASE_URL } from 'services';
 
-export const RegisterForm = () => {
-  const dispatch = useDispatch();
+export const LoginForm = () => {
+  const dispatch = useAppDispatch();
 
-  const { control, reset, handleSubmit } = useForm({
+  const { control, reset, handleSubmit } = useForm<LoginData>({
     defaultValues: {
-      name: '',
       email: '',
       password: '',
     },
-    resolver: yupResolver(registerValidationSchema),
+    resolver: yupResolver(loginValidationSchema),
   });
 
-  const onSubmit = data => {
-    dispatch(register(data));
+  const onSubmit = (data: LoginData) => {
+    dispatch(logIn(data));
     reset();
   };
 
@@ -48,7 +47,7 @@ export const RegisterForm = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Register
+          Log In
         </Typography>
         <Box
           component="form"
@@ -56,7 +55,6 @@ export const RegisterForm = () => {
           noValidate
           sx={{ mt: 1 }}
         >
-          <CustomInput id="name" label="Name" name="name" control={control} />
           <CustomInput
             id="email"
             label="Email"
@@ -76,7 +74,7 @@ export const RegisterForm = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Register
+            Log In
           </Button>
 
           <Grid
@@ -89,17 +87,16 @@ export const RegisterForm = () => {
             }}
           >
             <Grid item>
-              <Link to="/login">Already have an account? Login</Link>
+              <Link to="/register">{"Don't have an account? Register"}</Link>
             </Grid>
           </Grid>
-
           {/* <Button
             href={`${BASE_URL}/users/google`}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Register with Google
+            Log In with Google
           </Button> */}
         </Box>
       </Box>

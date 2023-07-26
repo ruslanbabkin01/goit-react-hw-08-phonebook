@@ -1,7 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { logIn, logOut, refreshUser, register } from './operations';
+import { User } from '../../../@types/types';
 
-const initialState = {
+interface IAuthState {
+  user: User;
+  accessToken: string | null;
+  isLoggedIn: boolean;
+  isRefreshing: boolean;
+}
+
+const initialState: IAuthState = {
   user: { name: null, email: null, subscription: null },
   accessToken: null,
   isLoggedIn: false,
@@ -12,18 +20,21 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAccessToken(state, action) {
+    setAccessToken(state, action: PayloadAction<string>) {
       state.accessToken = action.payload;
       state.isLoggedIn = true;
     },
   },
   extraReducers: builder => {
     builder
-      //   .addCase(register.fulfilled , (state, action) =>{
-      //   state.user = action.payload.user.user;
-      //   state.accessToken = action.payload.accessToken;
-      //   state.isLoggedIn = true;
-      // })
+      // .addCase(
+      //   register.fulfilled,
+      //   (state, action) => {
+      //     state.user = action.payload.user.user;
+      //     state.accessToken = action.payload.accessToken;
+      //     state.isLoggedIn = true;
+      //   }
+      // )
       .addCase(register.pending, (state, action) => {
         state.isRefreshing = true;
       })
@@ -60,4 +71,5 @@ const authSlice = createSlice({
 });
 
 export const { setAccessToken } = authSlice.actions;
+
 export const authReducer = authSlice.reducer;

@@ -1,5 +1,5 @@
 import { contactsReducer } from './contacts/contactsSlice';
-import { filterReducer } from './contacts/filterSlice';
+import { filterReducer } from './contacts/slice';
 import { authReducer } from './auth/slice';
 import { configureStore } from '@reduxjs/toolkit';
 import {
@@ -36,3 +36,7 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;

@@ -1,2 +1,2 @@
 export * from './GlobalStyles';
-export * from './theme.jsx';
+export * from './theme';

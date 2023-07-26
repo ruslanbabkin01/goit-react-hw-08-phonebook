@@ -1,11 +1,11 @@
-import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from '../hooks/useAuth';
 import { Box, Button, Typography } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
+import { useAppDispatch } from 'redux/hooks';
 
 export const UserMenu = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userName } = useAuth();
   const onLogOut = () => dispatch(logOut());
 

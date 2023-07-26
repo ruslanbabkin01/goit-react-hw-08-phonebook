@@ -1,11 +1,11 @@
-import { useDispatch } from 'react-redux';
-import { setFilter } from '../redux/contacts/filterSlice';
+import { setFilter } from '../redux/contacts/slice';
 import { TextField } from '@mui/material';
+import { useAppDispatch } from 'redux/hooks';
 
 export const Filter = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  function changeFilter(e) {
+  function changeFilter(e: React.ChangeEvent<HTMLInputElement>) {
     const inputValue = e.target.value;
     dispatch(setFilter(inputValue));
   }

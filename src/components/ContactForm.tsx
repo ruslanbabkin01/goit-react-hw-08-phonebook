@@ -1,4 +1,3 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from '../redux/contacts/operations';
 import { Button, Box } from '@mui/material';
@@ -6,12 +5,16 @@ import { useForm } from 'react-hook-form';
 import { contactValidationSchema } from 'validationSсhemas/validationSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { CustomInput } from './CustomInput';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { ContactData } from '../../@types/types';
+
+
 
 export const ContactForm = () => {
-  const contacts = useSelector(selectContacts);
-  const dispatch = useDispatch();
+  const contacts = useAppSelector(selectContacts);
+  const dispatch = useAppDispatch();
 
-  const { control, reset, handleSubmit } = useForm({
+  const { control, reset, handleSubmit } = useForm<ContactData>({
     defaultValues: {
       name: '',
       number: '',
