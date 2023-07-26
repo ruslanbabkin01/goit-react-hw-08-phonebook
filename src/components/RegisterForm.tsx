@@ -29,7 +29,7 @@ export const RegisterForm = () => {
     resolver: yupResolver(registerValidationSchema),
   });
 
-  const onSubmit = data => {
+  const onSubmit = (data: RegisterData) => {
     dispatch(register(data));
     reset();
   };

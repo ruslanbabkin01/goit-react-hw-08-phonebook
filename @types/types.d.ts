@@ -1,8 +1,8 @@
 export type Contact = {
   name: string;
   email: string;
-  number: number;
-  _id: string;
+  number: string;
+  _id?: string | undefined;
   owner?: string;
   favorite?: boolean;
 };

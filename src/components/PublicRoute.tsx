@@ -6,7 +6,15 @@ import { Navigate } from 'react-router-dom';
  * - Otherwise render the component
  */
 
-export const PublicRoute = ({ component: Component, redirectTo = '/' }) => {
+interface IPublicRoute {
+  component: React.ReactNode;
+  redirectTo: string;
+}
+
+export const PublicRoute: React.FC<IPublicRoute> = ({
+  component: Component,
+  redirectTo = '/',
+}) => {
   const { isLoggedIn } = useAuth();
   return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 };

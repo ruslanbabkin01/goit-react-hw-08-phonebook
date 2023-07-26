@@ -1,13 +1,13 @@
 import { TextField, TextFieldProps } from '@mui/material';
-import { Control, Controller, FieldValues } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 
 interface CustomInputProps {
-  control: Control<FieldValues>;
-  id: string;
+  control: any;
+  id?: string;
   name: string;
   label: string;
-  type: string;
-  placeholder: string;
+  type?: string;
+  placeholder?: string;
 }
 
 export const CustomInput: React.FC<CustomInputProps> = ({

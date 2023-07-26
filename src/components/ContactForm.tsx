@@ -8,8 +8,6 @@ import { CustomInput } from './CustomInput';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { ContactData } from '../../@types/types';
 
-
-
 export const ContactForm = () => {
   const contacts = useAppSelector(selectContacts);
   const dispatch = useAppDispatch();
@@ -23,7 +21,7 @@ export const ContactForm = () => {
     resolver: yupResolver(contactValidationSchema),
   });
 
-  const onSubmit = data => {
+  const onSubmit = (data: ContactData) => {
     const { name } = data;
 
     const currentName = name;

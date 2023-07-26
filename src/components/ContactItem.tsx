@@ -6,12 +6,19 @@ import { toast } from 'react-toastify';
 import { useAppDispatch } from 'redux/hooks';
 import { Contact } from '../../@types/types';
 
-export const ContactItem = ({ name, number, email, _id }: Contact) => {
+export const ContactItem: React.FC<Contact> = ({
+  name,
+  number,
+  email,
+  _id,
+}) => {
   const dispatch = useAppDispatch();
 
   const handleDelete = () => {
-    dispatch(deleteContact(_id));
-    toast.info(`Contact ${name} deleted`);
+    if (_id) {
+      dispatch(deleteContact(_id));
+      toast.info(`Contact ${name} deleted`);
+    }
   };
 
   return (
@@ -31,7 +38,6 @@ export const ContactItem = ({ name, number, email, _id }: Contact) => {
       </Box>
 
       <IconButton
-        variant="outlined"
         type="button"
         id={_id}
         onClick={handleDelete}

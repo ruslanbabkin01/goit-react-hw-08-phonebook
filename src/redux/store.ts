@@ -1,5 +1,5 @@
 import { contactsReducer } from './contacts/contactsSlice';
-import { filterReducer } from './contacts/slice';
+import { filterReducer } from './contacts/filterSlice';
 import { authReducer } from './auth/slice';
 import { configureStore } from '@reduxjs/toolkit';
 import {

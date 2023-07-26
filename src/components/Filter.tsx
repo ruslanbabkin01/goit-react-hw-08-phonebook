@@ -1,4 +1,4 @@
-import { setFilter } from '../redux/contacts/slice';
+import { setFilter } from '../redux/contacts/filterSlice';
 import { TextField } from '@mui/material';
 import { useAppDispatch } from 'redux/hooks';
 

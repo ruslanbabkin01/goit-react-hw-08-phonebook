@@ -61,11 +61,12 @@ export const logOut = createAsyncThunk<
   }
 });
 
-export const refreshUser = createAsyncThunk<User,
+export const refreshUser = createAsyncThunk<
+  User,
   undefined,
-  { rejectValue: string }
+  { rejectValue: string; state: RootState }
 >('auth/refresh', async (_, thunkAPI) => {
-  const state = thunkAPI.getState() as RootState;
+  const state = thunkAPI.getState();
   const persistedToken = state.auth.accessToken;
 
   if (!persistedToken) {
