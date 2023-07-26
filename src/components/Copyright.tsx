@@ -1,7 +1,7 @@
-import Typography from '@mui/material/Typography';
+import Typography, { TypographyProps } from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
-export const Copyright = props => {
+export const Copyright: React.FC<TypographyProps> = ({ ...props }) => {
   return (
     <Typography
       variant="body2"
