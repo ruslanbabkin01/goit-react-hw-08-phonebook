@@ -7,7 +7,7 @@ import { useAuth } from 'hooks/useAuth';
  */
 
 interface IPrivateRoute {
-  component: React.ReactNode;
+  component: React.ReactElement;
   redirectTo: string;
 }
 

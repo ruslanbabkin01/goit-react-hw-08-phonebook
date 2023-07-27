@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom';
  */
 
 interface IPublicRoute {
-  component: React.ReactNode;
+  component: React.ReactElement;
   redirectTo: string;
 }
 
